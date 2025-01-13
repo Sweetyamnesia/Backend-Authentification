@@ -1,49 +1,40 @@
-function checkToken () {
-    const nom = document.getElementById('nom');
-    const prenom = document.getElementById('prenom');
-    const email = document.getElementById('email');
-    const mdp = document.getElementById('password');
-    const confirmMdp = document.getElementById('confirmpassword');
-    const token = localStorage.getItem('access_token');
+window.onload = function() {
+const token = localStorage.getItem('access_token');
+
     if (!token) {
-        // Token absent, refuser la connexion
         console.log('Token absent, redirection vers la page de connexion');
         window.location.href = '/connexion';
         return;
-    } else {
-        if (token) {
-            fetch('/submit-form', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    nom : nom,
-                    prenom: prenom,
-                    email: email,
-                    password: mdp,
-                    confirmPassword: confirmMdp
-                })
-            })
-        }
     }
-}
-
-checkToken();
-
-/*/console.log('Token présent, redirection vers la page du tableau de bord');
-        window.location.href = '/dashboard';/*/
-
-
+      fetch('/getdata', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`, // Envoie le token dans l'en-tête Authorization
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        console.log('Réponse reçue:', response)
+        if (!response.ok) {
+          throw new Error('Token invalide ou expiré');
+        }
+        return response.json();
+      })
+      .then(data => {
+          if (data.name && data.lastname) {
+            document.getElementById('welcome').textContent = `Bienvenue, ${name} ${lastname}`;
+          }
+        }) 
+      .catch(error => {
+        console.error('Erreur:', error);
+        localStorage.removeItem('access_token'); // Supprime le token en cas d'erreur
+        window.location.href = '/connexion';
+      });
+    };
+               
 const buttonOff = document.getElementById('deconnexion');
-
-if (buttonOff) {
     buttonOff.addEventListener('click', function () {
-        const token = localStorage.getItem('access_token');
-        if(token) {
+        console.log('bouton enclenché')
         localStorage.removeItem('access_token');
         window.location.href = '/connexion';
-        }
     });
-}
