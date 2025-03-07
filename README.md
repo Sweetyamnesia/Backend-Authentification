@@ -1,36 +1,36 @@
-# Authentification avec Node.js et Express
+# Authentification avec Node.js et Express 🔐
 
-## Description du projet :
+## Description générale 🌟
 
-Ce projet explore les bases de l'authentification et de la sécurisation des applications web en utilisant Node.js et Express. L'objectif est de comprendre et d'implémenter les différentes étapes d'un système d'authentification sécurisé, de la création d'un serveur au stockage sécurisé des mots de passe et à l'utilisation des tokens pour la gestion des sessions.
+Ce projet explore les bases de l'authentification et de la sécurisation des applications web avec **Node.js** et **Express**. L'objectif est de mettre en place un système d'authentification sécurisé, en utilisant des tokens JWT pour la gestion des sessions, ainsi que le chiffrement des mots de passe avec **SHA256**.
 
-## Pile technologique : 
+## Pile technologique 🛠️
 
-- **Node.js** : pour le développement backend.
-- **Express** : framework minimaliste pour la création du serveur.
-- **jsonwebtoken (JWT)** : pour la gestion des tokens.
-- **SHA256** : pour le chiffrement des mots de passe.
-- **MongoDB** : pour le stockage des utilisateurs et des données.
-- **express-jwt** : pour la gestion des autorisations partielles.
+- **Node.js** : Backend
+- **Express** : Framework pour le serveur
+- **jsonwebtoken (JWT)** : Gestion des tokens
+- **SHA256** : Chiffrement des mots de passe
+- **MongoDB** : Base de données pour stocker les utilisateurs
+- **express-jwt** : Gestion des autorisations partielles
 
+## Caractéristiques principales ✨
 
-## Caractéristiques :
+- **Création d'un serveur** : Mise en place d'un serveur avec **Node.js** et **Express**.
+- **Formulaire d'inscription** : Enregistrement sécurisé des utilisateurs avec chiffrement du mot de passe.
+- **Token d'authentification** : Création, gestion et vérification des tokens JWT pour l'authentification des utilisateurs.
+- **Base de données MongoDB** : Enregistrement des utilisateurs et de leurs données dans MongoDB.
+- **Système de déconnexion** : Déconnexion de l'utilisateur avec invalidation du token.
+- **Déconnexion automatique** : Suppression du token au démarrage de la page si celui-ci est invalide.
+- **Middleware d'erreurs** : Gestion des erreurs d'authentification et de sécurité.
+- **Autorisation partielle** : Accès restreint à certaines ressources via **express-jwt**.
+- **Page de connexion sécurisée** : Création d’une page de connexion avec vérification de l'utilisateur.
 
-- **Création d'un serveur** : Mise en place d'un serveur Node.js et Express.
-- **Formulaire d'inscription** : Création d'un formulaire d'inscription avec chiffrement du mot de passe.
-- **Token d'authentification** : Création et gestion d'un token pour l'authentification.
-- **Enregistrement en base de données** : Enregistrement des utilisateurs dans une base de données MongoDB.
-- **Système de déconnexion** : Implémentation d'un système de déconnexion pour invalider le token utilisateur.
-- **Déconnexion automatique** : Refactorisation pour déconnecter automatiquement l'utilisateur au démarrage de la page en l'absence de token valide.
-- **Middleware de gestion des erreurs** : Mise en place d'un middleware pour gérer les erreurs d'authentification.
-- **Autorisation partielle** : Utilisation d'express-jwt pour limiter l'accès à certaines ressources.
-- **Récupération des données utilisateur** : Affichage des données de l'utilisateur authentifié.
-- **Page de connexion** : Création d'une page de connexion sécurisée.
+## Problèmes connus ⚠️
 
-## Problèmes connus : 
+- **Problème d'authentification du token** : Le token n'est pas détecté à l'arrivée sur la page d'accueil malgré sa présence dans le **localStorage**.
+- **Problèmes d'accès aux pages** : Selon les routes autorisées, des erreurs empêchent l'accès à certaines pages.
+  
+## 📅 En cours...
 
-- Problème d'authentification avec le token qui n'est pas détecté lorsqu'on arrive dans la page d'accueil,
-et ce, malgré sa présence dans le localStorage. Impossibilité d'accéder à la page d'accueil.
-- Selon que certaines routes soient autorisées ou non, génération d'erreurs/problèmes qui empêchent l'accessibilité aux pages.
-
+Le projet est encore en développement. Lors de la reprise, ces problèmes seront résolus et la fonctionnalité sera pleinement opérationnelle.
 
